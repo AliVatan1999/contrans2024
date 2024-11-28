@@ -1,0 +1,39 @@
+services:
+  jupyter:
+    image: alivatan1999/python_jupyterlab
+    ports:
+      - "8888:8888"
+    env_file:
+      - .env
+    volumes:
+      - /c/Alireza/Data Science/Data Engineering/Codes/contrans2024/contrans2024:/contrans2024 
+    networks:
+      - dbnetwork
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+    networks:
+      - dbnetwork
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    env_file:
+      - .env
+    volumes:
+      - mongodata:/data/db
+    networks: 
+      - dbnetwork
+
+volumes:
+  postgresdata:
+  mongodata:
+
+networks:
+  dbnetwork:
