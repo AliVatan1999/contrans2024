@@ -10,6 +10,6 @@ RUN pip install -r requirements.txt
 
 ENV secretpassword=whenyourehereyourefamily
 
-EXPOSE 8888
+EXPOSE 8050
 
-CMD ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]
+CMD ["python", "app.py"]
